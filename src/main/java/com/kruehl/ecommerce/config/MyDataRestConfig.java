@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 @Configuration
 public class MyDataRestConfig implements RepositoryRestConfigurer {
 
+    // configure which methods are allowed
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
 
@@ -18,12 +19,12 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
         config.getExposureConfiguration()
                 .forDomainType(Product.class)
-                .withItemExposure(((metadata, httpMethods) -> httpMethods.disable(unsupportedActions)))
-                .withCollectionExposure(((metadata, httpMethods) -> httpMethods.disable(unsupportedActions)));
+                .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(unsupportedActions)))
+                .withCollectionExposure(((metdata, httpMethods) -> httpMethods.disable(unsupportedActions)));
 
         config.getExposureConfiguration()
                 .forDomainType(ProductCategory.class)
-                .withItemExposure(((metadata, httpMethods) -> httpMethods.disable(unsupportedActions)))
-                .withCollectionExposure(((metadata, httpMethods) -> httpMethods.disable(unsupportedActions)));
+                .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(unsupportedActions)))
+                .withCollectionExposure(((metdata, httpMethods) -> httpMethods.disable(unsupportedActions)));
     }
 }
